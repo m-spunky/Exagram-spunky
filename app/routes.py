@@ -106,7 +106,7 @@ Tasks:
 2. Identify key areas where the answersheet could be improved.
 3. Offer general suggestions for improving performance across the entire paper.
 
-Output Format in dictionary:
+Output Format is string of dictionary containing:
 - marks_scored : [Total Marks Scored] out of [Total Marks].
 - total_marks : Total Marks of question paper
 - improvement_areas: [List of Weaknesses Identified].
@@ -160,6 +160,7 @@ def upload_buddy():
 def result():
     user_question = ""
     total_sections = 0
+    result_dict = {}
 
     if request.method == 'POST':
         total_sections = int(request.form.get('total_sections', 0))
@@ -238,8 +239,12 @@ def evaluate_answers_buddy():
     # Evaluate the answers from the form
     evaluation = evaluate_answers(questions_dict)
     print(evaluation)
-    evaluation = json.loads(evaluation)
-    print(evaluation)
+    try:
+        evaluation = json.loads(evaluation)
+        print(evaluation)
+    except Exception as e:
+        print(e)
+        return render_template('evaluation_result_2.html', evaluation=evaluation)
     return render_template('evaluation_result.html', evaluation=evaluation)
 
 
