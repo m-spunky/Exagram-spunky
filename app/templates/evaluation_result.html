@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Evaluation Result</h1>
+<p><strong>Total Marks Scored:</strong> {{ evaluation['marks_scored'] }} out of {{ evaluation['total_marks'] }}</p>
+
+<h2>Areas of Improvement:</h2>
+<ul>
+    {% for weakness in evaluation['improvement_areas'] %}
+    <li>{{ weakness }}</li>
+    {% endfor %}
+</ul>
+
+<h2>Suggestions for Improvement:</h2>
+<ul>
+    {% for suggestion in evaluation['improvement_suggest'] %}
+    <li>{{ suggestion }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
