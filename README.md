@@ -1,5 +1,6 @@
 ## Running Server Locally
 
+NOTE : Put firebase_key.json file in app directory & .env file containing GOOGLE_API_KEY in root directory.
 
 1. Create Virtual environment for (python<3.11)
     ```sh
